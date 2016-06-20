@@ -412,6 +412,53 @@
 					}
 				}
 			]
+		},
+		{
+			"type": "Microsoft.Logic/workflows",
+			"apiVersion": "2015-02-01-preview",
+			"name": "myflow",
+			"properties": {
+				"state": "Enabled",
+				"parameters": {
+					"para1": {
+						"type": "Bool",
+						"value": { }
+					}
+				}
+			},
+			"resources": [
+				{
+					"type": "accessKeys",
+					"apiVersion": "2015-02-01-preview",
+					"properties": {
+						"notAfter": "2016-06-20T22:55:47.000Z"
+					}
+				}
+			]
+		},
+		{
+			"type": "Microsoft.Logic/workflows/accessKeys",
+			"name": "mykeys",
+			"apiVersion": "2015-02-01-preview",
+			"properties": {
+
+			}
+		},
+		{
+			"type": "Microsoft.RecoveryServices/vaults",
+			"apiVersion": "2016-06-01",
+			"name": "vaults",
+			"location": "East US",
+			"sku": {
+				"name": "RS0",
+				"tier": "Standard"
+			},
+			"properties": {
+				"prop1": "val1"
+			},
+			"tags": {
+				"additional": "value"
+			}
 		}
 	]
 }

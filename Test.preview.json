@@ -299,6 +299,49 @@
 				"parameters": { },
 				"mode": "Incremental"
 			}
+		},
+		{
+			"type": "Microsoft.Logic/workflows",
+			"name": "myWorkflow",
+			"apiVersion": "2015-02-01-preview",
+			"properties": {
+				"sku": {
+					"name": "Basic",
+					"plan": {
+						"id": "123"
+					}
+				}
+			},
+			"resources": [
+				{
+					"type": "accessKeys",
+					"apiVersion": "2015-02-01-preview",
+					"properties": {
+
+					}
+				}
+			]
+		},
+		{
+			"apiVersion": "2015-02-01-preview",
+			"name": "flow2",
+			"properties": {
+
+			},
+			"type": "Microsoft.Logic/workflows/accessKeys"
+		},
+		{
+			"type": "Microsoft.RecoveryServices/vaults",
+			"apiVersion": "2015-12-15",
+			"location": "Australia East",
+			"name": "valuts",
+			"sku": {
+				"name": "RS0",
+				"tier": "Standard"
+			},
+			"properties": {
+
+			}
 		}
 	]
 }
