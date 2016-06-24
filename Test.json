@@ -330,6 +330,39 @@
 					"properties": {
 					},
 					"type": "object"
+				},
+				"assets": {
+					"asset": {
+						"name": "11",
+						"type": "Module",
+						"locationInfo": {
+							"uri": "http://test.com"
+						},
+						"parameters": [
+							{
+								"modeValuesInfo": {
+									"prop1": {
+										"interfaceString": "123",
+										"parameters": [
+											{
+												"modeValuesInfo": {
+													"abc": {
+														"parameters": [
+															{
+																"modelValuesInfo": {
+
+																}
+															}
+														]
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						]
+					}
 				}
 			}
 		},
@@ -421,7 +454,7 @@
 				"state": "Enabled",
 				"parameters": {
 					"para1": {
-						"type": "Bool",
+						"type": "Array",
 						"value": { }
 					}
 				}
@@ -459,6 +492,38 @@
 			"tags": {
 				"additional": "value"
 			}
+		},
+		{
+			"type": "Microsoft.Media/mediaServices",
+			"apiVersion": "2015-10-01",
+			"name": "sfdsfw",
+			"location": "East US",
+			"properties": {
+				"storageAccounts": [
+					{
+						"id": "123",
+						"isPrimary": false
+					}
+				]
+			}
+		},
+		{
+			"type": "Microsoft.Cache/Redis",
+			"name": "redis",
+			"apiVersion": "2016-04-01",
+			"properties": {
+				"sku": {
+					"name": "Basic",
+					"capacity": 15,
+					"family": "C"
+				},
+				"shardCount": 30,
+				"tenantSettings": {
+					"set1": "abc"
+				},
+				"subnetId": "/subscriptions/123/resourceGroups/abc/providers/Microsoft.Network/virtualNetworks/abc/subnets/sub"
+			}
 		}
+
 	]
 }

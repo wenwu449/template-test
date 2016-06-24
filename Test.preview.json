@@ -287,6 +287,39 @@
 					"properties": {
 					},
 					"type": "object"
+				},
+				"assets": {
+					"asset": {
+						"name": "11",
+						"type": "Module",
+						"locationInfo": {
+							"uri": "http://test.com"
+						},
+						"parameters": [
+							{
+								"modeValuesInfo": {
+									"prop1": {
+										"interfaceString": "123",
+										"parameters": [
+											{
+												"modeValuesInfo": {
+													"abc": {
+														"parameters": [
+															{
+																"modelValuesInfo": {
+
+																}
+															}
+														]
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						]
+					}
 				}
 			}
 		},
@@ -306,7 +339,7 @@
 			"apiVersion": "2015-02-01-preview",
 			"properties": {
 				"sku": {
-					"name": "Basic",
+					"name": "Free",
 					"plan": {
 						"id": "123"
 					}
@@ -341,6 +374,33 @@
 			},
 			"properties": {
 
+			}
+		},
+		{
+			"type": "Microsoft.Media/mediaServices",
+			"apiVersion": "2015-10-01",
+			"location": "East US",
+			"name": "12345",
+			"properties": {
+				"storageAccounts": [
+					{
+						"id": "[concat('a', 'b')]",
+						"isPrimary": false
+					}
+				]
+			}
+		},
+		{
+			"type": "Microsoft.Cache/Redis",
+			"apiVersion": "2016-04-01",
+			"name": "redis",
+			"properties": {
+				"sku": {
+					"name": "Premium",
+					"capacity": 15,
+					"family": "C"
+				},
+				"staticIP": "10.10.123.178"
 			}
 		}
 	]
