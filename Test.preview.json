@@ -390,18 +390,55 @@
 				]
 			}
 		},
-		{
-			"type": "Microsoft.Cache/Redis",
-			"apiVersion": "2016-04-01",
-			"name": "redis",
-			"properties": {
-				"sku": {
-					"name": "Premium",
-					"capacity": 15,
-					"family": "C"
-				},
-				"staticIP": "10.10.123.178"
-			}
-		}
+    {
+      "type": "Microsoft.Cache/Redis",
+      "apiVersion": "2016-04-01",
+      "name": "redis",
+      "properties": {
+        "sku": {
+          "name": "Premium",
+          "capacity": 15,
+          "family": "C"
+        },
+        "staticIP": "10.10.123.178"
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/gateways",
+      "apiVersion": "2015-07-01-preview",
+      "location": "Australia East",
+      "name": "gateway",
+      "properties": { }
+    },
+    {
+      "type": "Microsoft.ServerManagement/nodes",
+      "apiVersion": "2015-07-01-preview",
+      "location": "[parameters('location')]",
+      "name": "snode",
+      "properties": {
+        "connectionName": "name",
+        "gatewayId": "id"
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/gateways/sessions",
+      "apiVersion": "2015-07-01-preview",
+      "location": "Central US",
+      "name": "gsession",
+      "properties": {
+        "username": "u",
+        "password": "[parameters('pwd')]"
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/nodes/sessions",
+      "apiVersion": "2015-07-01-preview",
+      "location": "Central US",
+      "name": "gsession",
+      "properties": {
+        "username": "u",
+        "password": "[parameters('pwd')]"
+      }
+    }
 	]
 }

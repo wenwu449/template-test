@@ -523,7 +523,43 @@
 				},
 				"subnetId": "/subscriptions/123/resourceGroups/abc/providers/Microsoft.Network/virtualNetworks/abc/subnets/sub"
 			}
-		}
-
+		},
+    {
+      "type": "Microsoft.ServerManagement/gateways",
+      "apiVersion": "2015-07-01-preview",
+      "location": "Australia East",
+      "name": "gateway",
+      "properties": { }
+    },
+    {
+      "type": "Microsoft.ServerManagement/nodes",
+      "apiVersion": "2015-07-01-preview",
+      "location": "[parameters('location')]",
+      "name": "snode",
+      "properties": {
+        "connectionName": "name",
+        "gatewayId": "id"
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/gateways/sessions",
+      "apiVersion": "2015-07-01-preview",
+      "location": "Central US",
+      "name": "gsession",
+      "properties": {
+        "username": "u",
+        "password": "[parameters('pwd')]"
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/nodes/sessions",
+      "apiVersion": "2015-07-01-preview",
+      "location": "Central US",
+      "name": "gsession",
+      "properties": {
+        "username": "u",
+        "password": "[parameters('pwd')]"
+      }
+    }
 	]
 }
