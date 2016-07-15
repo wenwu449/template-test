@@ -9,6 +9,14 @@
       "type": "string"
     }
   },
+  "outputs": {
+    "out1": {
+      "type": "secureObject",
+      "value": {
+        "abc":  "val1"
+      }
+    }
+  },
   "resources": [
     {
       "type": "Microsoft.ServerManagement/nodes",
@@ -607,7 +615,7 @@
       "location": "[resourceGroup().location]",
       "copy": {
         "name": "BEnicLoop",
-        "count": "[length(parameters('BEvirtualMachineNames'))]"
+        "count": "[listAll(parameters('BEvirtualMachineNames'), '2015-05-01-preview'))]"
       },
       "dependsOn": [
       ],
@@ -619,13 +627,13 @@
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[concat(parameters('BEsubnetIPPrefix'),copyIndex(parameters('BEnicStartingAddress')))]",
               "subnet": {
-                "id": "[variables('BEsubnetRef')]"
+                "id": "[listAll(parameters('BEvirtualMachineNames'), '2015-05-01-preview'))]"
               }
             }
           }
         ],
         "dnsSettings": {
-          "dnsServers": "[parameters('onPremDNSServers')]"
+          "dnsServers": "[skip(parameters('onPremDNSServers'), 3)]"
         }
       }
     },
@@ -633,7 +641,7 @@
       "type": "Microsoft.Network/dnszones",
       "apiVersion": "2016-04-01",
       "name": "myzones",
-      "location": "Central India",
+      "location": "Canada Central",
       "properties": {}
     }
   ]
