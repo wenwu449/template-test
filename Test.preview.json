@@ -1,407 +1,450 @@
 {
-	"$schema": "http://ryanstorage.blob.core.windows.net/fwlink/schemas/2014-04-01-preview/deploymentTemplate.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"name": {
-			"type": "string"
-		},
-		"regionId": {
-			"type": "string"
-		}
-	},
-	"resources": [
-		{
-			"name": "test",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2014-04-01-preview",
-			"dependsOn": [ ],
-			"tags": {
-				"displayName": "test"
-			},
-			"properties": {
-				"mode": "Incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('_artifactsLocation'), '/', parameters('testTemplateFolder'), '/', parameters('testTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"parm1": {
-						"value": "['variables(foo)']"
-					}
-				}
-			}
-		},
-		{
-			"type": "Microsoft.Network/trafficManagerProfiles",
-			"apiVersion": "2015-11-01",
-			"name": "a",
-			"location": "global",
-			"properties": {
-				"dnsConfig": {
-					"relativeName": "a",
-					"ttl": 31,
-					"fqdn": "a"
-				},
-				"monitorConfig": {
-					"path": "a",
-					"port": 80,
-					"protocol": "HTTP"
-				},
-				"trafficRoutingMethod": "Performance"
-			}
-		},
-		{
-			"type": "Microsoft.DataCatalog/catalogs",
-			"apiVersion": "2016-03-30",
-			"name": "a",
-			"location": "Australia East",
-			"properties": {
-				"sku": "Free",
-				"enableAutomaticUnitAdjustment": false,
-				"units": 100,
-				"admins": [
-					{
-						"objectId": "a",
-						"upn": "b"
-					}
-				]
-			}
-		},
-		{
-			"type": "Microsoft.DataLakeAnalytics/accounts",
-			"apiVersion": "2015-10-01-preview",
-			"location": "Australia East",
-			"name": "[parameters('a')]",
-			"properties": {
-				"dataLakeStoreAccounts": [
-					{
-						"name": "[variables('b')]"
-					}
-				],
-				"defaultDataLakeStoreAccount": "[parameters('b')]",
-				"storageAccounts": [
-					{
-						"name": "[parameters('a')]",
-						"properties": {
-							"accessKey": "[parameters('d')]"
-						}
-					}
-				]
-			}
-		},
-		{
-			"type": "Microsoft.DataLakeStore/accounts",
-			"apiVersion": "2015-10-01-preview",
-			"location": "Australia East",
-			"name": "b",
-			"properties": {
-				"defaultGroup": "parameters('b')",
-				"firewallRules": [
-					{
-						"name": "dfadf",
-						"properties": {
-							"endIpAddress": "1.0.0.0",
-							"startIpAddress": "[variables('c')]"
-						}
-					}
-				],
-				"firewallState": "[variables('d')]"
-			}
-		},
-		{
-			"type": "Microsoft.Scheduler/jobCollections",
-			"apiVersion": "2014-08-01-preview",
-			"name": "a",
-			"location": "Central India",
-			"properties": {
-				"sku": {
-					"name": "Free"
-				}
-			}
-		},
-		{
-			"type": "Microsoft.DevTestLab/labs/virtualMachines",
-			"apiVersion": "2015-05-21-preview",
-			"name": "[ parameters('b') ]",
-			"location": "parameters('c')]",
-			"properties": {
-				"labSubnetName": "daf",
-				"labVirtualNetworkId": "dafda",
-				"size": "afadfa"
-			}
-		},
-		{
-			"type": "Microsoft.ContainerService/containerServices",
-			"apiVersion": "2016-03-30",
-			"location": "Australia East",
-			"name": "a",
-			"properties": {
-				"agentPoolProfiles": [
-					{
-						"count": "[parameters('c')]",
-						"dnsPrefix": "dafaf",
-						"name": "a",
-						"vmSize": "c"
-					}
-				],
-				"linuxProfile": {
-					"adminUsername": "a",
-					"ssh": {
-						"publicKeys": [
-							{
-								"keyData": "afdaf"
-							}
-						]
-					}
-				},
-				"masterProfile": {
-					"count": 1,
-					"dnsPrefix": "afdaf"
-				},
-				"orchestratorProfile": {
-					"orchestratorType": "dafafda"
-				}
-			}
-		},
-		{
-			"type": "Microsoft.PowerBI/workspaceCollections",
-			"name": "[parameters('a')]",
-			"apiVersion": "2016-01-29",
-			"location": "[parameters('a')]",
-			"sku": {
-				"name": "S1"
-			}
-		},
-		{
-			"type": "Microsoft.Network/dnszones",
-			"apiVersion": "2015-05-04-preview",
-			"name": "adf",
-			"location": "abcd",
-			"properties": {
-				"maxNumberOfRecordSets": "[parameters('b')]"
-			},
-			"tags": {
-				"a": "n"
-			}
-		},
-		{
-			"type": "Microsoft.Batch/batchAccounts/applications",
-			"apiVersion": "2015-12-01",
-			"name": "dafdaf",
-			"location": "dfadafd",
-			"tags": {
-				"c": "cac"
-			}
-		},
-		{
-			"type": "Microsoft.Batch/batchAccounts",
-			"apiVersion": "2015-12-01",
-			"location": "Australia East",
-			"name": "dafdaf",
-			"tags": {
-				"c": "cac"
-			},
-			"properties": {
-				"autoStorage": {
-					"storageAccountId": "afdafa"
-				}
-			}
-		},
-		{
-			"type": "Microsoft.CognitiveServices/accounts",
-			"apiVersion": "2016-02-01-preview",
-			"kind": "ComputerVision",
-			"location": "Australia East",
-			"name": "adfad",
-			"sku": {
-				"name": "S0"
-			},
-			"properties": {
-			}
-		},
-		{
-			"type": "Microsoft.Cdn/profiles",
-			"apiVersion": "2015-06-01",
-			"name": "[parameters('c')]",
-			"location": "Australia Southeast",
-			"properties": {
-				"sku": {
-					"name": "Premium"
-				}
-			}
-		},
-		{
-			"type": "Microsoft.Storage/storageAccounts",
-			"apiVersion": "2016-01-01",
-			"kind": "BlobStorage",
-			"name": "cdsdf",
-			"location": "Australia East",
-			"properties": {
-			},
-			"sku": {
-				"name": "Premium_LRS"
-			}
-		},
-		{
-			"type": "Microsoft.Automation/automationAccounts/runbooks",
-			"apiVersion": "2015-10-31",
-			"name": "daf",
-			"location": "Australia East",
-			"properties": {
-				"publishedContentLink": "afdaf",
-				"runbookType": "Graph"
-			}
-		},
-		{
-			"type": "Microsoft.Automation/automationAccounts/modules",
-			"apiVersion": "2015-10-31",
-			"name": "adfdaf",
-			"location": "Australia East",
-			"properties": {
-				"contentLink": {
-					"uri": "afda",
-					"contentHash": {
-						"algorithm": "afd",
-						"value": "afdaf"
-					}
-				}
-			}
-		},
-		{
-			"type": "Microsoft.DevTestLab/labs/virtualMachines",
-			"apiVersion": "2016-05-15",
-			"name": "adfa",
-			"properties": {
-				"labSubnetName": "afdaf",
-				"labVirtualNetworkId": "afdafdaf",
-				"size": "afdafadf"
-			}
-		},
-		{
-			"type": "Microsoft.MachineLearning/webServices",
-			"apiVersion": "2016-05-01-preview",
-			"name": "adcdfd",
-			"properties": {
-				"title": "adfda",
-				"input": {
-					"properties": {
-					},
-					"type": "object"
-				},
-				"assets": {
-					"asset": {
-						"name": "11",
-						"type": "Module",
-						"locationInfo": {
-							"uri": "http://test.com"
-						},
-						"parameters": [
-							{
-								"modeValuesInfo": {
-									"prop1": {
-										"interfaceString": "123",
-										"parameters": [
-											{
-												"modeValuesInfo": {
-													"abc": {
-														"parameters": [
-															{
-																"modelValuesInfo": {
+  "$schema": "http://ryanstorage.blob.core.windows.net/fwlink/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string"
+    },
+    "regionId": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "name": "test",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2014-04-01-preview",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "test"
+      },
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('_artifactsLocation'), '/', parameters('testTemplateFolder'), '/', parameters('testTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "parm1": {
+            "value": "['variables(foo)']"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/trafficManagerProfiles",
+      "apiVersion": "2015-11-01",
+      "name": "a",
+      "location": "global",
+      "properties": {
+        "dnsConfig": {
+          "relativeName": "a",
+          "ttl": 31,
+          "fqdn": "a"
+        },
+        "monitorConfig": {
+          "path": "a",
+          "port": 80,
+          "protocol": "HTTP"
+        },
+        "trafficRoutingMethod": "Performance"
+      }
+    },
+    {
+      "type": "Microsoft.DataCatalog/catalogs",
+      "apiVersion": "2016-03-30",
+      "name": "a",
+      "location": "Australia East",
+      "properties": {
+        "sku": "Free",
+        "enableAutomaticUnitAdjustment": false,
+        "units": 100,
+        "admins": [
+          {
+            "objectId": "a",
+            "upn": "b"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.DataLakeAnalytics/accounts",
+      "apiVersion": "2015-10-01-preview",
+      "location": "Australia East",
+      "name": "[parameters('a')]",
+      "properties": {
+        "dataLakeStoreAccounts": [
+          {
+            "name": "[variables('b')]"
+          }
+        ],
+        "defaultDataLakeStoreAccount": "[parameters('b')]",
+        "storageAccounts": [
+          {
+            "name": "[parameters('a')]",
+            "properties": {
+              "accessKey": "[parameters('d')]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.DataLakeStore/accounts",
+      "apiVersion": "2015-10-01-preview",
+      "location": "Australia East",
+      "name": "b",
+      "properties": {
+        "defaultGroup": "parameters('b')",
+        "firewallRules": [
+          {
+            "name": "dfadf",
+            "properties": {
+              "endIpAddress": "1.0.0.0",
+              "startIpAddress": "[variables('c')]"
+            }
+          }
+        ],
+        "firewallState": "[variables('d')]"
+      }
+    },
+    {
+      "type": "Microsoft.Scheduler/jobCollections",
+      "apiVersion": "2014-08-01-preview",
+      "name": "a",
+      "location": "Central India",
+      "properties": {
+        "sku": {
+          "name": "Free"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.DevTestLab/labs/virtualMachines",
+      "apiVersion": "2015-05-21-preview",
+      "name": "[ parameters('b') ]",
+      "location": "parameters('c')]",
+      "properties": {
+        "labSubnetName": "daf",
+        "labVirtualNetworkId": "dafda",
+        "size": "afadfa"
+      }
+    },
+    {
+      "type": "Microsoft.ContainerService/containerServices",
+      "apiVersion": "2016-03-30",
+      "location": "Australia East",
+      "name": "a",
+      "properties": {
+        "agentPoolProfiles": [
+          {
+            "count": "[parameters('c')]",
+            "dnsPrefix": "dafaf",
+            "name": "a",
+            "vmSize": "c"
+          }
+        ],
+        "linuxProfile": {
+          "adminUsername": "a",
+          "ssh": {
+            "publicKeys": [
+              {
+                "keyData": "afdaf"
+              }
+            ]
+          }
+        },
+        "masterProfile": {
+          "count": 1,
+          "dnsPrefix": "afdaf"
+        },
+        "orchestratorProfile": {
+          "orchestratorType": "dafafda"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.PowerBI/workspaceCollections",
+      "name": "[parameters('a')]",
+      "apiVersion": "2016-01-29",
+      "location": "[parameters('a')]",
+      "sku": {
+        "name": "S1"
+      }
+    },
+    {
+      "type": "Microsoft.Network/dnszones",
+      "apiVersion": "2015-05-04-preview",
+      "name": "adf",
+      "location": "abcd",
+      "properties": {
+        "maxNumberOfRecordSets": "[parameters('b')]"
+      },
+      "tags": {
+        "a": "n"
+      }
+    },
+    {
+      "type": "Microsoft.Batch/batchAccounts/applications",
+      "apiVersion": "2015-12-01",
+      "name": "dafdaf",
+      "location": "dfadafd",
+      "tags": {
+        "c": "cac"
+      }
+    },
+    {
+      "type": "Microsoft.Batch/batchAccounts",
+      "apiVersion": "2015-12-01",
+      "location": "Australia East",
+      "name": "dafdaf",
+      "tags": {
+        "c": "cac"
+      },
+      "properties": {
+        "autoStorage": {
+          "storageAccountId": "afdafa"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2016-02-01-preview",
+      "kind": "ComputerVision",
+      "location": "Australia East",
+      "name": "adfad",
+      "sku": {
+        "name": "S0"
+      },
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.Cdn/profiles",
+      "apiVersion": "2015-06-01",
+      "name": "[parameters('c')]",
+      "location": "Australia Southeast",
+      "properties": {
+        "sku": {
+          "name": "Premium"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "kind": "BlobStorage",
+      "name": "cdsdf",
+      "location": "Australia East",
+      "properties": {
+      },
+      "sku": {
+        "name": "Premium_LRS"
+      }
+    },
+    {
+      "type": "Microsoft.Automation/automationAccounts/runbooks",
+      "apiVersion": "2015-10-31",
+      "name": "daf",
+      "location": "Australia East",
+      "properties": {
+        "publishedContentLink": "afdaf",
+        "runbookType": "Graph"
+      }
+    },
+    {
+      "type": "Microsoft.Automation/automationAccounts/modules",
+      "apiVersion": "2015-10-31",
+      "name": "adfdaf",
+      "location": "Australia East",
+      "properties": {
+        "contentLink": {
+          "uri": "afda",
+          "contentHash": {
+            "algorithm": "afd",
+            "value": "afdaf"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.DevTestLab/labs/virtualMachines",
+      "apiVersion": "2016-05-15",
+      "name": "adfa",
+      "properties": {
+        "labSubnetName": "afdaf",
+        "labVirtualNetworkId": "afdafdaf",
+        "size": "afdafadf"
+      }
+    },
+    {
+      "type": "Microsoft.MachineLearning/webServices",
+      "apiVersion": "2016-05-01-preview",
+      "name": "adcdfd",
+      "properties": {
+        "title": "adfda",
+        "input": {
+          "properties": {
+          },
+          "type": "object"
+        },
+        "assets": {
+          "asset": {
+            "name": "11",
+            "type": "Module",
+            "locationInfo": {
+              "uri": "http://test.com"
+            },
+            "parameters": [
+              {
+                "modeValuesInfo": {
+                  "prop1": {
+                    "interfaceString": "123",
+                    "parameters": [
+                      {
+                        "modeValuesInfo": {
+                          "abc": {
+                            "parameters": [
+                              {
+                                "modelValuesInfo": {
 
-																}
-															}
-														]
-													}
-												}
-											}
-										]
-									}
-								}
-							}
-						]
-					}
-				}
-			}
-		},
-		{
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2014-04-01-preview",
-			"name": "[parameters('a')]",
-			"properties": {
-				"template": { },
-				"parameters": { },
-				"mode": "Incremental"
-			}
-		},
-		{
-			"type": "Microsoft.Logic/workflows",
-			"name": "myWorkflow",
-			"apiVersion": "2015-02-01-preview",
-			"properties": {
-				"sku": {
-					"name": "Free",
-					"plan": {
-						"id": "123"
-					}
-				}
-			},
-			"resources": [
-				{
-					"type": "accessKeys",
-					"apiVersion": "2015-02-01-preview",
-					"properties": {
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2014-04-01-preview",
+      "name": "[parameters('a')]",
+      "properties": {
+        "template": {},
+        "parameters": {},
+        "mode": "Incremental"
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "name": "myWorkflow",
+      "apiVersion": "2015-02-01-preview",
+      "properties": {
+        "sku": {
+          "name": "Free",
+          "plan": {
+            "id": "123"
+          }
+        }
+      },
+      "resources": [
+        {
+          "type": "accessKeys",
+          "apiVersion": "2015-02-01-preview",
+          "properties": {
 
-					}
-				}
-			]
-		},
-		{
-			"apiVersion": "2015-02-01-preview",
-			"name": "flow2",
-			"properties": {
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2015-02-01-preview",
+      "name": "flow2",
+      "properties": {
 
-			},
-			"type": "Microsoft.Logic/workflows/accessKeys"
-		},
-		{
-			"type": "Microsoft.RecoveryServices/vaults",
-			"apiVersion": "2015-12-15",
-			"location": "Australia East",
-			"name": "valuts",
-			"sku": {
-				"name": "RS0",
-				"tier": "Standard"
-			},
-			"properties": {
+      },
+      "type": "Microsoft.Logic/workflows/accessKeys"
+    },
+    {
+      "type": "Microsoft.RecoveryServices/vaults",
+      "apiVersion": "2015-12-15",
+      "location": "Australia East",
+      "name": "valuts",
+      "sku": {
+        "name": "RS0",
+        "tier": "Standard"
+      },
+      "properties": {
 
-			}
-		},
-		{
-			"type": "Microsoft.Media/mediaServices",
-			"apiVersion": "2015-10-01",
-			"location": "East US",
-			"name": "12345",
-			"properties": {
-				"storageAccounts": [
-					{
-						"id": "[concat('a', 'b')]",
-						"isPrimary": false
-					}
-				]
-			}
-		},
-		{
-			"type": "Microsoft.Cache/Redis",
-			"apiVersion": "2016-04-01",
-			"name": "redis",
-			"properties": {
-				"sku": {
-					"name": "Premium",
-					"capacity": 15,
-					"family": "C"
-				},
-				"staticIP": "10.10.123.178"
-			}
-		}
-	]
+      }
+    },
+    {
+      "type": "Microsoft.Media/mediaServices",
+      "apiVersion": "2015-10-01",
+      "location": "East US",
+      "name": "12345",
+      "properties": {
+        "storageAccounts": [
+          {
+            "id": "[concat('a', 'b')]",
+            "isPrimary": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Cache/Redis",
+      "apiVersion": "2016-04-01",
+      "name": "redis",
+      "properties": {
+        "sku": {
+          "name": "Premium",
+          "capacity": 15,
+          "family": "C"
+        },
+        "staticIP": "10.10.123.178"
+      }
+    },
+    {
+      "type": "Microsoft.Network/dnszones",
+      "apiVersion": "2016-04-01",
+      "name": "myzone",
+      "location": "East US",
+      "properties": {
+
+      },
+      "resources": [
+        {
+          "apiVersion": "2016-04-01",
+          "name": "abc",
+          "properties": {
+
+          },
+          "type": "MX"
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2016-02-03",
+      "location": "East Asia",
+      "name": "myhubs",
+      "subscriptionid": "123",
+      "resourcegroup": "groupname",
+      "properties": {
+        "authorizationPolicies": [
+          {
+            "keyName": "key1"
+          }
+        ],
+        "eventHubEndpoints": {
+          "prop1": {
+            "partitionCount": 12,
+            "retentionTimeInDays": 3
+          }
+        }
+      },
+      "sku": {
+        "name": "F1"
+      }
+    }
+  ]
 }
