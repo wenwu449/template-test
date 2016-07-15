@@ -452,10 +452,8 @@
     {
       "type": "Microsoft.Devices/IotHubs",
       "apiVersion": "2016-02-03",
-      "location": "East Asia",
-      "name": "myhubs",
-      "subscriptionid": "123",
-      "resourcegroup": "groupname",
+      "location": "East US",
+      "name": "myiot",
       "properties": {
         "authorizationPolicies": [
           {
@@ -465,13 +463,58 @@
         "eventHubEndpoints": {
           "prop1": {
             "partitionCount": 12,
-            "retentionTimeInDays": 3
+            "retentionTimeInDays": 12
+          }
+        },
+        "cloudToDevice": {
+          "maxDeliveryCount": 99,
+          "defaultTtlAsIso8601": "abc",
+          "feedback": {
+            "lockDurationAsIso8601": "123",
+            "ttlAsIso8601": "33",
+            "maxDeliveryCount": 33
           }
         }
       },
       "sku": {
         "name": "F1"
       }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[concat(parameters('BEvirtualMachineNames')[copyIndex()],'-nic')]",
+      "location": "[resourceGroup().location]",
+      "copy": {
+        "name": "BEnicLoop",
+        "count": "[length(parameters('BEvirtualMachineNames'))]"
+      },
+      "dependsOn": [
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[concat(parameters('BEsubnetIPPrefix'),copyIndex(parameters('BEnicStartingAddress')))]",
+              "subnet": {
+                "id": "[variables('BEsubnetRef')]"
+              }
+            }
+          }
+        ],
+        "dnsSettings": {
+          "dnsServers": "[parameters('onPremDNSServers')]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/dnszones",
+      "apiVersion": "2016-04-01",
+      "name": "myzones",
+      "location": "Central India",
+      "properties": {}
     }
   ]
 }
