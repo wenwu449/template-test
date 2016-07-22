@@ -515,6 +515,47 @@
       "name": "myzones",
       "location": "Central India",
       "properties": {}
+    },
+    {
+      "type": "Sendgrid.Email/accounts",
+      "apiVersion": "2015-01-01",
+      "name": "myemailAccounts",
+      "plan": {
+        "name": "[parameters('name')]",
+        "product": "free",
+        "promotionCode": "123"
+      },
+      "properties": {
+        "password": "12345678",
+        "acceptMarketingEmails": "[parameters('accept')]",
+        "email": "abc@outlook.com"
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2016-06-01",
+      "name": "myflows",
+      "properties": {
+        "state": "Suspended",
+        "sku": {
+          "name": "NotSpecified",
+          "plan": {
+            "id": "myid"
+          }
+        },
+        "definition": {
+          "prop1": "val1"
+        },
+        "parameters": {
+          "para1": {
+            "type": "Bool",
+            "value": {
+
+            },
+            "metadata": "[parameters('metadata')]"
+          }
+        }
+      }
     }
   ]
 }
