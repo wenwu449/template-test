@@ -540,7 +540,7 @@
         "sku": {
           "name": "NotSpecified",
           "plan": {
-            "id": "myid"
+            "id": "123"
           }
         },
         "definition": {
@@ -555,6 +555,110 @@
             "metadata": "[parameters('metadata')]"
           }
         }
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2015-06-15",
+      "name": "myextension",
+      "location": "West Central US",
+      "properties": {
+        "publisher": "publisher",
+        "settings": {
+
+        },
+        "type": "mytype",
+        "typeHandlerVersion": "123",
+        "autoUpgradeMinorVersion": "abc"
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2015-06-15",
+      "name": "extension1",
+      "properties": {
+        "publisher": "Microsoft.Azure.Diagnostics",
+        "type": "IaaSDiagnostics",
+        "typeHandlerVersion": "12",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "xmlCfg": "123",
+          "StorageAccount": "ba"
+        },
+        "protectedSettings": {
+          "storageAccountName": "storage",
+          "storageAccountKey": "ljsfa;lj",
+          "storageAccountEndPoint": "endpoint"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
+      "location": "Canada East",
+      "name": "virtualmachine",
+      "properties": {
+        "hardwareProfile": "[parameters('a')]",
+        "storageProfile": "[parameters('b')]",
+        "networkProfile": "[parameters('c')]"
+      },
+      "resources": [
+        {
+          "type": "extensions",
+          "apiVersion": "2015-06-15",
+          "name": "extension1",
+          "properties": {
+            "publisher": "Microsoft.Azure.Diagnostics",
+            "type": "IaaSDiagnostics",
+            "typeHandlerVersion": "12",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+              "xmlCfg": "123",
+              "StorageAccount": "ba"
+            },
+            "protectedSettings": {
+              "storageAccountName": "storage",
+              "storageAccountKey": "ljsfa;lj",
+              "storageAccountEndPoint": "endpoint"
+            }
+          }
+        },
+        {
+          "type": "extensions",
+          "apiVersion": "2015-06-15",
+          "name": "myextension",
+          "location": "West Central US",
+          "properties": {
+            "publisher": "publisher",
+            "settings": {
+
+            },
+            "type": "mytype",
+            "typeHandlerVersion": "123",
+            "autoUpgradeMinorVersion": "abc"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.MachineLearning/commitmentPlans",
+      "apiVersion": "2016-05-01-preview",
+      "name": "myplans",
+      "sku": {
+        "name": "mysku",
+        "tier": "12",
+        "capacity": 12
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2016-02-01-preview",
+      "name": "myaccounts",
+      "sku": "[parameters('sku')]",
+      "kind": "Face",
+      "location": "Canada Central",
+      "properties": {
+        "prop1": "val1"
       }
     }
   ]
