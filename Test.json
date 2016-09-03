@@ -1,5 +1,5 @@
 {
-  "$schema": "http://ryanstorage.blob.core.windows.net/fwlink/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "name": {
@@ -299,13 +299,32 @@
       }
     },
     {
-      "type": "Microsoft.DevTestLab/labs/virtualMachines",
+      "type": "Microsoft.DevTestLab/labs",
       "apiVersion": "2016-05-15",
       "name": "adfa",
       "properties": {
-        "labSubnetName": "afdaf",
-        "labVirtualNetworkId": "afdafdaf",
-        "size": "afdafadf"
+        "defaultStorageAccount": "abc",
+        "labStorageType": "Premium"
+      },
+      "resources": [
+        {
+          "type": "virtualmachines",
+          "apiVersion": "2016-05-15",
+          "name": "ljkio",
+          "properties": {
+            "notes": "bcde",
+            "isAuthenticationWithSshKey": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.DevTestLab/labs/artifactsources",
+      "apiVersion": "2016-05-15",
+      "name": "dss",
+      "properties": {
+        "displayName": "jldskl",
+        "sourceType": "GitHub"
       }
     },
     {
@@ -786,7 +805,211 @@
       "kind": "Face",
       "location": "Canada Central",
       "properties": {
-        "prop1":  "val1"
+        "prop1": "val1"
+      }
+    },
+    {
+      "type": "Microsoft.DataFactory/datafactories",
+      "apiVersion": "2015-10-01",
+      "name": "df01",
+      "location": "West US",
+      "resources": [
+        {
+          "type": "linkedservices",
+          "apiVersion": "2015-10-01",
+          "name": "linked",
+          "properties": {
+            "type": "AzureSqlDatabase",
+            "typeProperties": {
+              "connectionString": "jlsdk"
+            }
+          }
+        },
+        {
+          "type": "datasets",
+          "apiVersion": "2015-10-01",
+          "name": "datasets",
+          "properties": {
+            "type": "AzureSqlTable",
+            "availability": {
+              "frequency": "Month",
+              "interval": 1,
+              "style": "StartOfInterval"
+            },
+            "linkedServiceName": "name1",
+            "typeProperties": {
+              "tableName": "agd"
+            }
+          }
+        },
+        {
+          "type": "pipelines",
+          "name": "pipe",
+          "apiVersion": "2015-10-01",
+          "properties": {
+            "activities": [
+              {
+                "name": "activity1",
+                "type": "AzureMLBatchScoring",
+                "inputs": [
+                  {
+                    "name": "1"
+                  }
+                ],
+                "typeProperties": {
+                  "webServiceParameters": {
+                    "abc": "123"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Datafactory/datafactories/datasets",
+      "apiVersion": "2015-10-01",
+      "name": "datasets",
+      "properties": {
+        "type": "AzureSqlTable",
+        "availability": {
+          "frequency": "Month",
+          "interval": 1,
+          "style": "StartOfInterval"
+        },
+        "linkedServiceName": "name1",
+        "typeProperties": {
+          "tableName": "agd"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2015-08-01",
+      "name": "eventhubNamespaces",
+      "location": "Central US",
+      "sku": {
+        "name": "Basic",
+        "tier": "Basic"
+      },
+      "properties": {
+        "status": "Active",
+        "enabled": false
+      },
+      "resources": [
+        {
+          "type": "eventhubs",
+          "apiVersion": "2015-08-01",
+          "location": "Canada East",
+          "name": "23",
+          "properties": {
+            "status": "Creating"
+          }
+        },
+        {
+          "type": "AuthorizationRules",
+          "apiVersion": "2015-08-01",
+          "location": "Canada East",
+          "name": "234",
+          "properties": {
+            "rights": [
+              "Manage"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2015-08-01",
+      "name": "rules",
+      "location": "East Asia",
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2015-08-01",
+      "location": "Canada Central",
+      "name": "fds",
+      "sku": {
+        "tier": "Premium"
+      },
+      "properties": {
+        "status": "Creating"
+      },
+      "resources": [
+        {
+          "type": "queues",
+          "apiVersion": "2015-08-01",
+          "name": "234",
+          "location": "Canada Central",
+          "properties": {
+
+          },
+          "resources": [
+            {
+              "type": "authorizationRules",
+              "apiVersion": "2015-08-01",
+              "location": "West US",
+              "name": "jlk",
+              "properties": {
+                "rights": [
+                  "Listen"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2015-08-01",
+      "name": "123",
+      "location": "Central US",
+      "properties": {
+        "requiresSession": true
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/gateways",
+      "apiVersion": "2016-07-01-preview",
+      "name": "mygateways",
+      "location": "Central US",
+      "properties": {
+        "upgradeMode": "Manual"
+      }
+    },
+    {
+      "type": "Microsoft.ServerManagement/nodes",
+      "apiVersion": "2016-07-01-preview",
+      "name": "mynodes",
+      "properties": {
+        "gatewayId": "gwid"
+      },
+      "resources": [
+        {
+          "type": "sessions",
+          "apiVersion": "2016-07-01-preview",
+          "properties": {
+            "password": "123"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.ServerManagement/gateways/sessions",
+      "apiVersion": "2016-07-01-preview",
+      "name": "sessions",
+      "location": "Brazil South",
+      "properties": {
+        "password": "jlfsd"
       }
     }
   ]
