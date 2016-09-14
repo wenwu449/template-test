@@ -375,14 +375,6 @@
       ]
     },
     {
-      "apiVersion": "2015-02-01-preview",
-      "name": "flow2",
-      "properties": {
-
-      },
-      "type": "Microsoft.Logic/workflows/accessKeys"
-    },
-    {
       "type": "Microsoft.RecoveryServices/vaults",
       "apiVersion": "2015-12-15",
       "location": "Australia East",
@@ -715,7 +707,7 @@
           }
         },
         {
-          "type": "pipelines",
+          "type": "dataPipelines",
           "name": "pipe",
           "apiVersion": "2015-10-01",
           "properties": {

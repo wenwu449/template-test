@@ -497,13 +497,6 @@
       ]
     },
     {
-      "type": "Microsoft.Logic/workflows/accessKeys",
-      "name": "mykeys",
-      "apiVersion": "2015-02-01-preview",
-      "properties": {
-      }
-    },
-    {
       "type": "Microsoft.RecoveryServices/vaults",
       "apiVersion": "2016-06-01",
       "name": "vaults",
@@ -843,7 +836,7 @@
           }
         },
         {
-          "type": "pipelines",
+          "type": "dataPipelines",
           "name": "pipe",
           "apiVersion": "2015-10-01",
           "properties": {
