@@ -1,5 +1,5 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "http://ryanstorage.blob.core.windows.net/fwlink/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "name": {
@@ -348,52 +348,6 @@
       }
     },
     {
-      "type": "Microsoft.MachineLearning/webServices",
-      "apiVersion": "2016-05-01-preview",
-      "name": "adcdfd",
-      "properties": {
-        "title": "adfda",
-        "input": {
-          "properties": {
-          },
-          "type": "object"
-        },
-        "assets": {
-          "asset": {
-            "name": "11",
-            "type": "Module",
-            "locationInfo": {
-              "uri": "http://test.com"
-            },
-            "parameters": [
-              {
-                "modeValuesInfo": {
-                  "prop1": {
-                    "interfaceString": "123",
-                    "parameters": [
-                      {
-                        "modeValuesInfo": {
-                          "abc": {
-                            "parameters": [
-                              {
-                                "modelValuesInfo": {
-
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-02-01",
       "name": "[parameters('a')]",
@@ -485,22 +439,6 @@
             "value": {}
           }
         }
-      },
-      "resources": [
-        {
-          "type": "accessKeys",
-          "apiVersion": "2015-02-01-preview",
-          "properties": {
-            "notAfter": "2016-06-20T22:55:47.000Z"
-          }
-        }
-      ]
-    },
-    {
-      "type": "Microsoft.Logic/workflows/accessKeys",
-      "name": "mykeys",
-      "apiVersion": "2015-02-01-preview",
-      "properties": {
       }
     },
     {
@@ -621,7 +559,20 @@
             "ttlAsIso8601": "33",
             "maxDeliveryCount": 33
           }
-        }
+        },
+        "operationsMonitoringProperties": {
+          "events": {
+            "abc": "Error",
+            "ds": "Error, Information"
+          }
+        },
+        "ipFilterRules": [
+          {
+            "filterName": "name",
+            "action": "Accept",
+            "ipMask": "192.168.1.1/24"
+          }
+        ]
       },
       "sku": {
         "name": "F1"
@@ -706,7 +657,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "name": "myextension",
       "location": "West Central US",
       "properties": {
@@ -791,6 +742,7 @@
       "type": "Microsoft.MachineLearning/commitmentPlans",
       "apiVersion": "2016-05-01-preview",
       "name": "myplans",
+      "location": "West Central US",
       "sku": {
         "name": "mysku",
         "tier": "12",
@@ -806,82 +758,6 @@
       "location": "Canada Central",
       "properties": {
         "prop1": "val1"
-      }
-    },
-    {
-      "type": "Microsoft.DataFactory/datafactories",
-      "apiVersion": "2015-10-01",
-      "name": "df01",
-      "location": "West US",
-      "resources": [
-        {
-          "type": "linkedservices",
-          "apiVersion": "2015-10-01",
-          "name": "linked",
-          "properties": {
-            "type": "AzureSqlDatabase",
-            "typeProperties": {
-              "connectionString": "jlsdk"
-            }
-          }
-        },
-        {
-          "type": "datasets",
-          "apiVersion": "2015-10-01",
-          "name": "datasets",
-          "properties": {
-            "type": "AzureSqlTable",
-            "availability": {
-              "frequency": "Month",
-              "interval": 1,
-              "style": "StartOfInterval"
-            },
-            "linkedServiceName": "name1",
-            "typeProperties": {
-              "tableName": "agd"
-            }
-          }
-        },
-        {
-          "type": "pipelines",
-          "name": "pipe",
-          "apiVersion": "2015-10-01",
-          "properties": {
-            "activities": [
-              {
-                "name": "activity1",
-                "type": "AzureMLBatchScoring",
-                "inputs": [
-                  {
-                    "name": "1"
-                  }
-                ],
-                "typeProperties": {
-                  "webServiceParameters": {
-                    "abc": "123"
-                  }
-                }
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "type": "Microsoft.Datafactory/datafactories/datasets",
-      "apiVersion": "2015-10-01",
-      "name": "datasets",
-      "properties": {
-        "type": "AzureSqlTable",
-        "availability": {
-          "frequency": "Month",
-          "interval": 1,
-          "style": "StartOfInterval"
-        },
-        "linkedServiceName": "name1",
-        "typeProperties": {
-          "tableName": "agd"
-        }
       }
     },
     {
@@ -1010,6 +886,112 @@
       "location": "Brazil South",
       "properties": {
         "password": "jlfsd"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "name": "[parameters('a')]",
+      "properties": {
+        "template": {},
+        "parameters": {},
+        "mode": "Complete"
+      }
+    },
+    {
+      "apiVersion": "2016-09-01",
+      "name": "nestedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://ryanstorage.blob.core.windows.net/fwlink/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+
+          },
+          "resources": [],
+          "variables": {
+
+          },
+          "outputs": {
+            "result": {
+              "value": "Hello World",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2016-09-01",
+      "name": "validLock",
+      "type": "Microsoft.Authorization/locks",
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "test note"
+      }
+    },
+    {
+      "type": "Microsoft.ApiManagement/service",
+      "name": "myservice",
+      "apiVersion": "2016-07-07",
+      "location": "Canada East",
+      "sku": {
+        "name": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "publisherEmail": "abc"
+      }
+    },
+    {
+      "type": "Microsoft.AnalysisServices/servers",
+      "apiVersion": "2016-05-16",
+      "name": "myservers",
+      "location": "West US",
+      "sku": {
+        "name": "S1"
+      },
+      "properties": {
+        "asAdministrators": {
+          "members": [
+            "abc"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceFabric/clusters",
+      "apiVersion": "2016-09-01",
+      "name": "myclusters",
+      "properties": {
+        "nodeTypes": [
+          {
+            "vmInstanceCount": 12,
+            "name": "name",
+            "clientConnectionEndpointPort": 443,
+            "httpGatewayEndpointPort": 443,
+            "isPrimary": true
+          }
+        ],
+        "managementEndpoint": "https://abc.com"
+      }
+    },
+    {
+      "type": "Microsoft.MachineLearning/webServices",
+      "apiVersion": "2016-05-01-preview",
+      "name": "myservice",
+      "location": "East Asia",
+      "properties": {
+        "title": "abc",
+        "package": {
+          "nodes": {
+            "prop1": {
+              "assetId": "123"
+            }
+          }
+        }
       }
     }
   ]
